@@ -6,6 +6,7 @@ import './css/App.css';
 // Importing examples pages
 import LettersXNumbers from './pages/LettersXNumbers';
 import StandardExample from './pages/StandardExample';
+import ApiFetchExample from './pages/ApiFetchExample';
 
 const defaultPage = {
   pageName: 'Standard Example',
@@ -49,6 +50,10 @@ class App extends React.Component {
             {
               name: 'Letters and Numbers',
               component: <LettersXNumbers />,
+            },
+            {
+              name: 'Fetch from API',
+              component: <ApiFetchExample />,
             },
           ]}
           activePage={this.state.pageNum}
