@@ -1,16 +1,21 @@
 import React from 'react';
-import ForteTable from '../../../src';
+import ForteTable from '../../../src'; //
+import data from '../../data/persons.json'; // loads data from file
 
 function StandardExample() {
   return (
     <ForteTable
-      rows={() => [1, 2, 3, 4, 5, 6, 7, 8, 9]}
-      columns={() => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']}
+      rows={() => data} // sets the rows as the array of data
+      columns={() => ['id', 'first_name', 'last_name', 'email', 'ip_address']} // sets the array of columns
       cellRender={(c, r) => {
-        return 'cell' + c + r;
+        // renders the content of each cell
+        return r[c]; // takes text of column c of the row r
       }}
-      onCellClick={(e, c, r) => {
-        alert('buuu:' + c + r);
+      onCellDoubleClick={(e, c, r) => {
+        // callback on double click over cell
+        let title = r.gender === 'Male' ? 'Mr.' : 'Ms.'; // gets title form gender field of current row
+        let text = `${title} ${r.last_name} has ${c} = '${r[c]}'.`; // composes text
+        alert(text); // displays message.
       }}
     />
   );
